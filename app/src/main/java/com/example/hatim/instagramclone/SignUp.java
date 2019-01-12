@@ -1,6 +1,7 @@
 
 package com.example.hatim.instagramclone;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
@@ -92,6 +92,8 @@ btnSwitch.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
 
+        Intent intent = new Intent(SignUp.this , SignUpLogInActivity.class);
+        startActivity(intent);
     }
 });
     }
