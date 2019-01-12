@@ -1,5 +1,6 @@
 package com.example.hatim.instagramclone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,9 @@ public class SignUpLogInActivity extends AppCompatActivity {
                                     appUser.get("username") + " is signed Up",
                                     Toast.LENGTH_SHORT).show();
 
+                            Intent intent = new Intent(SignUpLogInActivity.this, WelcomeActivity.class);
+                            startActivity(intent);
+
                         } else {
 
                             Toast.makeText(SignUpLogInActivity.this,
@@ -72,6 +76,10 @@ public class SignUpLogInActivity extends AppCompatActivity {
                                     Toast.makeText(SignUpLogInActivity.this,
                                             user.get("username") + " is Log in ",
                                             Toast.LENGTH_SHORT).show();
+
+                                    Intent intent = new Intent(SignUpLogInActivity.this, WelcomeActivity.class);
+                                    startActivity(intent);
+
                                 } else {
                                     Toast.makeText(SignUpLogInActivity.this,
                                             e.getMessage(),
