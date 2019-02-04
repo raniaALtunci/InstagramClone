@@ -25,7 +25,7 @@ import com.parse.SignUpCallback;
 
 import java.util.List;
 
-public class SignUp extends AppCompatActivity implements View.OnClickListener {//implements View.OnClickListener{
+public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     private EditText edtEmail, edtUserName, edtPas;
     private Button btnLog, btnSign;
@@ -58,7 +58,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {/
         btnLog.setOnClickListener(this);
 
         if (ParseUser.getCurrentUser() != null) {
-            ParseUser.getCurrentUser().logOut();
+        //    ParseUser.getCurrentUser().logOut();
+            transitionToSocialMediaActivity();
         }
     }
         @Override
@@ -81,6 +82,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {/
                         final ProgressDialog progressDialog = new ProgressDialog(SignUp.this);
                         progressDialog.setMessage("signing up " + edtUserName.getText().toString());
                         progressDialog.show();
+                        transitionToSocialMediaActivity();
                         parseUser.signUpInBackground(new SignUpCallback() {
                             @Override
                             public void done(ParseException e) {
@@ -94,6 +96,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {/
                                 //to end showing progress dialog
                                 progressDialog.dismiss();
                             }
+
                         });
                     }
                 case R.id.btnLog:
@@ -124,6 +127,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {/
         }catch (Exception e){
             e.printStackTrace();
         }
+        }
+
+        private void transitionToSocialMediaActivity(){
+        Intent intent = new Intent(SignUp.this,SocialMediaActivity.class);
+        startActivity(intent);
         }
     }
 
